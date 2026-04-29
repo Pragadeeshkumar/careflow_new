@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CareFlow Patient - Live Queue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#94d5e9",
+                    "surface-variant": "#d8e3fb",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#151d1e",
+                    "surface-container": "#e7eeff",
+                    "surface": "#f9f9ff",
+                    "outline-variant": "#bfc8cb",
+                    "surface-container-high": "#dee8ff",
+                    "on-background": "#111c2d",
+                    "tertiary": "#374041",
+                    "background": "#f9f9ff",
+                    "on-secondary-fixed": "#00201d",
+                    "on-secondary-fixed-variant": "#00504a",
+                    "surface-tint": "#1d6778",
+                    "surface-container-highest": "#d8e3fb",
+                    "secondary-fixed-dim": "#71d7cd",
+                    "secondary-container": "#8bf1e6",
+                    "primary-fixed": "#aeecff",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#ecf1ff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#dbe4e5",
+                    "surface-container-low": "#f0f3ff",
+                    "surface-bright": "#f9f9ff",
+                    "on-primary-fixed-variant": "#004e5d",
+                    "inverse-surface": "#263143",
+                    "outline": "#70797c",
+                    "primary-container": "#0e5e6f",
+                    "on-error": "#ffffff",
+                    "secondary": "#006a63",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#bfc8c9",
+                    "primary": "#004553",
+                    "primary-fixed-dim": "#8fd0e4",
+                    "on-primary-fixed": "#001f26",
+                    "on-surface": "#111c2d",
+                    "surface-dim": "#cfdaf2",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#4e5758",
+                    "on-tertiary-fixed-variant": "#404849",
+                    "on-surface-variant": "#3f484b",
+                    "secondary-fixed": "#8ef4e9",
+                    "on-tertiary-container": "#c4cdce",
+                    "on-secondary-container": "#006f67",
+                    "inverse-primary": "#8fd0e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "section-gap": "48px",
+                    "unit": "8px",
+                    "container-margin": "32px",
+                    "stack-xs": "4px",
+                    "gutter": "24px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "h1": ["Manrope"],
+                    "caption": ["Manrope"],
+                    "h3": ["Manrope"],
+                    "h2": ["Manrope"],
+                    "label-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "1.2", "letterSpacing": "0", "fontWeight": "500"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-40 flex justify-between items-center px-6 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-stack-md">
+<span class="text-xl font-bold tracking-tight text-teal-800 dark:text-teal-100">CareFlow Patient</span>
+</div>
+<div class="flex items-center gap-stack-lg">
+<div class="hidden md:flex items-center gap-stack-lg font-manrope text-sm font-medium">
+<span class="text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-300 transition-colors cursor-pointer">Dashboard</span>
+<span class="text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-300 transition-colors cursor-pointer">Appointments</span>
+<span class="text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-300 transition-colors cursor-pointer">Medical Records</span>
+<span class="text-teal-700 dark:text-teal-400 font-semibold cursor-pointer">Live Queue</span>
+</div>
+<div class="flex items-center gap-stack-sm border-l border-slate-200 dark:border-slate-800 pl-stack-lg">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer active:opacity-70 transition-opacity" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer active:opacity-70 transition-opacity" data-icon="help">help</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant ml-2">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female patient with a calm and friendly expression in a modern clinic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZD05lgkHNUnju8ts2oVQsmK4SDeUoL4CuJ8q-QaNubcTx9Zn_Aibch4YbpeJuEJMJ177wxddEKpICT6h2Wwj8i6V1T4s3aT278Kn9IvT5TzHk7nLHNAuB-HRiRRdUudp83ylsr3jGNcO-20yznS5vgDT1PxedNK1OCzbhF9kf_x0v6ezPApD3wvY0LooTVU-kVL6rMdKRsIsftwa90IeTvXNT6qc7PLR-1Rlwy2wj2-BW_4zFVZp69ofExcERru5Bt2LFvD2BiDo"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden lg:flex flex-col pt-20 pb-6 w-64 h-screen fixed left-0 top-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 z-30">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-stack-sm mb-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" data-icon="local_hospital">local_hospital</span>
+</div>
+<span class="text-lg font-extrabold text-teal-800 dark:text-teal-100">Patient Portal</span>
+</div>
+<p class="text-xs text-slate-500 font-manrope">Health &amp; Wellness</p>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<div class="flex items-center gap-stack-sm px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-teal-50/50 dark:hover:bg-teal-900/10 transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-manrope text-sm">Dashboard</span>
+</div>
+<div class="flex items-center gap-stack-sm px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-teal-50/50 dark:hover:bg-teal-900/10 transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-manrope text-sm">Appointments</span>
+</div>
+<div class="flex items-center gap-stack-sm px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-teal-50/50 dark:hover:bg-teal-900/10 transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-manrope text-sm">Medical Records</span>
+</div>
+<div class="flex items-center gap-stack-sm px-3 py-2 bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 font-bold border-r-4 border-teal-600 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="hourglass_empty">hourglass_empty</span>
+<span class="font-manrope text-sm">Live Queue</span>
+</div>
+</nav>
+<div class="px-3 border-t border-slate-100 dark:border-slate-800 pt-4">
+<div class="flex items-center gap-stack-sm px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-teal-50/50 dark:hover:bg-teal-900/10 transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-manrope text-sm">Settings</span>
+</div>
+<div class="flex items-center gap-stack-sm px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-teal-50/50 dark:hover:bg-teal-900/10 transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-manrope text-sm">Sign Out</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-64 pt-24 px-6 md:px-10 pb-12 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Page Header -->
+<div class="mb-section-gap flex flex-col md:flex-row md:items-end justify-between gap-stack-lg">
+<div>
+<h1 class="font-h1 text-h1 text-primary mb-stack-xs">Live Queue</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Track your current status and estimated waiting time in real-time.</p>
+</div>
+<div class="flex items-center gap-stack-md bg-secondary-container/30 px-stack-lg py-stack-md rounded-xl border border-secondary-container/50">
+<span class="material-symbols-outlined text-secondary" data-icon="update">update</span>
+<div>
+<p class="text-caption font-caption text-secondary uppercase tracking-wider">Last Updated</p>
+<p class="font-label-md text-label-md text-on-secondary-container">Just now</p>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-stack-lg">
+<!-- Main Token Display Card -->
+<div class="md:col-span-8 flex flex-col gap-stack-lg">
+<div class="glass-card rounded-xl p-stack-lg border border-slate-200 shadow-[0_4px_20px_rgba(14,94,111,0.08)] overflow-hidden relative">
+<div class="absolute top-0 right-0 p-stack-lg">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-caption font-semibold">TOKEN ISSUED</span>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-10">
+<div class="flex flex-col items-center">
+<span class="text-caption font-caption text-outline mb-stack-sm">YOUR TOKEN</span>
+<div class="w-40 h-40 rounded-full border-8 border-primary flex items-center justify-center bg-white shadow-inner">
+<span class="text-6xl font-extrabold text-primary tracking-tighter">B-42</span>
+</div>
+</div>
+<div class="flex-1 w-full">
+<div class="flex justify-between items-end mb-stack-sm">
+<div>
+<h2 class="font-h3 text-h3 text-primary">In Queue</h2>
+<p class="text-body-md text-on-surface-variant">You are 3rd in line for the current stage.</p>
+</div>
+<div class="text-right">
+<p class="text-4xl font-bold text-secondary">15 <span class="text-lg">mins</span></p>
+<p class="text-caption font-caption text-outline">EST. WAIT TIME</p>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="relative w-full h-4 bg-slate-100 rounded-full overflow-hidden mt-stack-md">
+<div class="absolute top-0 left-0 h-full w-[70%] bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+</div>
+<div class="flex justify-between mt-stack-sm text-caption font-caption text-outline">
+<span>Token B-39 (Current)</span>
+<span>Goal: Consultation Room 4</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Journey Timeline -->
+<div class="glass-card rounded-xl p-stack-lg border border-slate-200 shadow-[0_4px_20px_rgba(14,94,111,0.08)]">
+<h3 class="font-h3 text-h3 text-primary mb-stack-lg">Journey Progress</h3>
+<div class="relative">
+<!-- Vertical Line -->
+<div class="absolute left-6 top-0 bottom-0 w-1 bg-slate-100"></div>
+<div class="space-y-10">
+<!-- Step 1: Completed -->
+<div class="relative flex items-start gap-stack-lg">
+<div class="z-10 w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white ring-4 ring-white">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div class="pt-1">
+<h4 class="font-label-md text-label-md text-secondary">Registration</h4>
+<p class="text-caption font-caption text-outline">Completed at 09:15 AM</p>
+</div>
+</div>
+<!-- Step 2: Active -->
+<div class="relative flex items-start gap-stack-lg">
+<div class="z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white ring-4 ring-white shadow-lg">
+<span class="material-symbols-outlined" data-icon="medical_information">medical_information</span>
+</div>
+<div class="pt-1 flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md text-primary">Consultation</h4>
+<p class="text-body-md text-on-surface-variant">Waiting for Dr. Sarah Mitchell</p>
+</div>
+<span class="bg-primary-container text-white px-2 py-0.5 rounded text-[10px] font-bold animate-pulse">LIVE</span>
+</div>
+<div class="mt-stack-sm p-stack-sm bg-surface-container rounded-lg border border-primary-fixed-dim/30">
+<p class="text-caption text-primary">Please proceed to <strong>Level 2, Wing A</strong> when your token is called.</p>
+</div>
+</div>
+</div>
+<!-- Step 3: Pending -->
+<div class="relative flex items-start gap-stack-lg opacity-40">
+<div class="z-10 w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 ring-4 ring-white">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+</div>
+<div class="pt-1">
+<h4 class="font-label-md text-label-md">Lab Tests</h4>
+<p class="text-caption font-caption">Scheduled after consultation</p>
+</div>
+</div>
+<!-- Step 4: Pending -->
+<div class="relative flex items-start gap-stack-lg opacity-40">
+<div class="z-10 w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 ring-4 ring-white">
+<span class="material-symbols-outlined" data-icon="prescriptions">prescriptions</span>
+</div>
+<div class="pt-1">
+<h4 class="font-label-md text-label-md">Pharmacy</h4>
+<p class="text-caption font-caption">Medication pick-up</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Information Column -->
+<div class="md:col-span-4 flex flex-col gap-stack-lg">
+<!-- Doctor Info Card -->
+<div class="bg-white rounded-xl border border-slate-200 p-stack-lg shadow-sm overflow-hidden">
+<div class="flex items-center gap-stack-md mb-stack-lg">
+<div class="w-14 h-14 rounded-xl bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up professional headshot of a male doctor in a white coat with a stethoscope around his neck" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsKBY4TVY4I1SVvmG731PS7HSDPgyLAETCKlTiBn2FRzQ7mGUjVmQB5vmFKs2k5pbKvdJMO3JqpQJOno7AxwR9BCzzVcDtxoXTXt-32oTk4fxiEfoc1CZuE_woC6bLbb1nrQtHpjHlEiQ0dmhLpX0CipTArNWpkwHkYtw-XuwBkd17Ef0X5AgE2WRaqjpPqHvNeYZZvuE34mXGzAFZ9ThdiXB4-A08ABbsEMeTStr2KT76f_BZiMWZQmOPZdXVKp_YNrh6hr8TonU"/>
+</div>
+<div>
+<p class="text-caption font-caption text-outline">CONSULTING WITH</p>
+<h4 class="font-label-md text-label-md text-primary">Dr. Sarah Mitchell</h4>
+</div>
+</div>
+<div class="space-y-stack-md">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Department</span>
+<span class="font-semibold text-primary">Cardiology</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Room</span>
+<span class="font-semibold text-primary">Clinic 4B</span>
+</div>
+<button class="w-full mt-2 py-3 px-4 border border-teal-600 text-teal-700 font-bold rounded-lg hover:bg-teal-50 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="map">map</span>
+                                Get Directions
+                            </button>
+</div>
+</div>
+<!-- Contextual Assistance Card -->
+<div class="bg-primary text-white rounded-xl p-stack-lg shadow-lg relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-9xl" data-icon="volunteer_activism">volunteer_activism</span>
+</div>
+<h4 class="font-h3 text-h3 mb-stack-sm">Need Help?</h4>
+<p class="text-sm text-primary-fixed mb-stack-lg">If you are feeling unwell while waiting, please notify our floor staff immediately.</p>
+<div class="space-y-stack-sm">
+<a class="flex items-center gap-stack-sm text-sm font-semibold hover:underline" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="call">call</span>
+                                Call Reception
+                            </a>
+<a class="flex items-center gap-stack-sm text-sm font-semibold hover:underline" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="support_agent">support_agent</span>
+                                Chat with CareFlow Assistant
+                            </a>
+</div>
+</div>
+<!-- Queue Stats -->
+<div class="bg-surface-container-low rounded-xl border border-slate-200 p-stack-lg">
+<h4 class="font-label-md text-label-md text-primary mb-stack-md">Queue Statistics</h4>
+<div class="grid grid-cols-2 gap-stack-md">
+<div class="p-stack-sm bg-white rounded-lg border border-slate-100">
+<p class="text-[10px] text-outline font-bold uppercase">Total Waiting</p>
+<p class="text-xl font-bold text-primary">12</p>
+</div>
+<div class="p-stack-sm bg-white rounded-lg border border-slate-100">
+<p class="text-[10px] text-outline font-bold uppercase">Avg. Flow</p>
+<p class="text-xl font-bold text-primary">8m/pt</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Visible on Home/Dashboard screens, but here for reference) -->
+<!-- Suppression logic: On detailed screens like this, we keep the UI focused on the queue. -->
+</body></html>

@@ -3,6 +3,25 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# VS Code
+.vscode/
+
+# Database
+*.db
+
+# ML models
+*.pkl
+
+# Environment files (if any)
+.env
+
 # C extensions
 *.so
 

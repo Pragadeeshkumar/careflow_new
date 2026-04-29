@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>E-Prescription &amp; Lab Orders | MedFlow Clinical</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#006a63",
+                    "surface-dim": "#cfdaf2",
+                    "on-primary-fixed-variant": "#004e5d",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#4e5758",
+                    "on-tertiary-fixed": "#151d1e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#404849",
+                    "primary-fixed-dim": "#8fd0e4",
+                    "inverse-on-surface": "#ecf1ff",
+                    "surface-variant": "#d8e3fb",
+                    "surface-container-low": "#f0f3ff",
+                    "on-primary-fixed": "#001f26",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f9f9ff",
+                    "on-secondary-container": "#006f67",
+                    "background": "#f9f9ff",
+                    "on-background": "#111c2d",
+                    "surface-container-highest": "#d8e3fb",
+                    "surface": "#f9f9ff",
+                    "primary-container": "#0e5e6f",
+                    "error-container": "#ffdad6",
+                    "outline": "#70797c",
+                    "primary": "#004553",
+                    "inverse-surface": "#263143",
+                    "secondary-container": "#8bf1e6",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#e7eeff",
+                    "outline-variant": "#bfc8cb",
+                    "on-surface-variant": "#3f484b",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#111c2d",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#c4cdce",
+                    "on-secondary-fixed-variant": "#00504a",
+                    "surface-tint": "#1d6778",
+                    "tertiary-fixed-dim": "#bfc8c9",
+                    "secondary-fixed-dim": "#71d7cd",
+                    "secondary-fixed": "#8ef4e9",
+                    "inverse-primary": "#8fd0e4",
+                    "surface-container-high": "#dee8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-xs": "4px",
+                    "stack-md": "16px",
+                    "unit": "8px",
+                    "stack-lg": "24px",
+                    "gutter": "24px",
+                    "stack-sm": "8px",
+                    "section-gap": "48px",
+                    "container-margin": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Manrope"],
+                    "h2": ["Manrope"],
+                    "h1": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "h3": ["Manrope"],
+                    "caption": ["Manrope"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.2", "letterSpacing": "0", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #bfc8cb;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-40 flex justify-between items-center px-6 h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 font-manrope antialiased text-sm">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tight text-teal-800 dark:text-teal-200">MedFlow Clinical</span>
+<div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg px-3 py-1.5 gap-2 w-64 border border-transparent focus-within:border-primary-container transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full p-0" placeholder="Quick Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 bg-error text-white px-4 py-2 rounded-lg font-bold text-sm hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="emergency_home">emergency_home</span>
+                Emergency Alert
+            </button>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden border border-slate-200">
+<img alt="Chief Surgeon Profile" class="w-full h-full object-cover" data-alt="professional headshot of a male doctor in medical attire with a clean clinical background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfBsHDTn6nAs08GXdWFhUjy-9FjWvc58FG3lw9tXhv9idT-wzv0o3VQ5SK9emO7rqqrGriSQp1tvdFQTHK0nD7_J1LckzVTgeqqYw1NGgHdmjdRGSZdH8oif-vH30mf7ogS_LFvOtK8hk4m_u4EkkU8oal8ZkeVW44VumjueHj_vK8eig38aPS3E7ymxTQwVwE8b2gPns6JkvWDWkspkx7XdZbZrqv6GYteadybP6JcTJG5-vEMw1kdktbLHAa9lZB49-FtoXjgoA"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 fixed left-0 top-0 pt-20 pb-6 px-4 flex flex-col gap-2 font-manrope text-sm font-medium z-30">
+<div class="flex items-center gap-3 px-4 mb-4">
+<div class="h-10 w-10 rounded-xl bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="stethoscope">stethoscope</span>
+</div>
+<div>
+<h4 class="text-on-background font-bold text-sm leading-tight">Dr. Julian Vance</h4>
+<p class="text-slate-500 text-xs">Surgical Oncology</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1 flex-1">
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-2.5 hover:bg-teal-100/50 dark:hover:bg-teal-900/10 hover:text-teal-800 dark:hover:text-teal-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-2.5 hover:bg-teal-100/50 dark:hover:bg-teal-900/10 hover:text-teal-800 dark:hover:text-teal-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Patient Queue
+            </a>
+<a class="flex items-center gap-3 bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 rounded-lg px-4 py-2.5 shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+                Consultations
+            </a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-2.5 hover:bg-teal-100/50 dark:hover:bg-teal-900/10 hover:text-teal-800 dark:hover:text-teal-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+                Lab Results
+            </a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-2.5 hover:bg-teal-100/50 dark:hover:bg-teal-900/10 hover:text-teal-800 dark:hover:text-teal-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+                Schedule
+            </a>
+</nav>
+<div class="mt-auto border-t border-slate-200 pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-2.5 hover:bg-teal-100/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-2.5 hover:bg-teal-100/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Sign Out
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-32 px-gutter min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Patient Header Context -->
+<div class="mb-stack-lg flex items-end justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-caption font-bold text-primary uppercase tracking-wider">Active Patient</span>
+<div class="h-1 w-1 rounded-full bg-slate-300"></div>
+<span class="text-caption text-slate-500 font-medium">ID: #8821-00</span>
+</div>
+<h1 class="font-h1 text-h1 text-on-background">Eleanor Fitzgerald</h1>
+<div class="flex gap-4 mt-2">
+<span class="text-label-md bg-surface-container-high px-3 py-1 rounded-full text-primary">68 yrs</span>
+<span class="text-label-md bg-surface-container-high px-3 py-1 rounded-full text-primary">F</span>
+<span class="text-label-md bg-error-container px-3 py-1 rounded-full text-on-error-container">Allergy: Penicillin</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="bg-white border-2 border-primary text-primary px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-primary/5 transition-all">
+                        View History
+                    </button>
+<button class="bg-primary text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-lg shadow-primary/10 hover:opacity-95 transition-all">
+                        New Consultation
+                    </button>
+</div>
+</div>
+<!-- E-Prescription Interface (Asymmetric Bento) -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Medication Entry Column -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-gutter">
+<!-- Medication Search & Selector -->
+<div class="bg-white rounded-xl border border-outline-variant p-stack-lg shadow-md relative overflow-visible">
+<div class="flex items-center gap-3 mb-stack-md">
+<span class="material-symbols-outlined text-primary" data-icon="prescriptions">prescriptions</span>
+<h2 class="font-h3 text-h3">Prescribe Medication</h2>
+</div>
+<div class="relative">
+<label class="block text-label-md text-on-surface-variant mb-stack-xs ml-1">Search Medication</label>
+<div class="flex items-center bg-slate-50 rounded-lg border-2 border-slate-100 focus-within:border-primary-container transition-all px-4 py-3 gap-3">
+<span class="material-symbols-outlined text-slate-400" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md" placeholder="Type generic or brand name..." type="text" value="Metformin"/>
+</div>
+<!-- Autocomplete Suggestions -->
+<div class="absolute top-full left-0 w-full mt-2 bg-white border border-outline-variant rounded-xl shadow-2xl z-20 overflow-hidden">
+<div class="p-2 border-b border-slate-50 bg-slate-50/50">
+<span class="text-caption text-slate-500 uppercase px-2">Suggestions</span>
+</div>
+<div class="hover:bg-primary-container/10 p-3 flex justify-between items-center cursor-pointer border-b border-slate-50">
+<div>
+<div class="font-bold text-primary">Metformin Hydrochloride</div>
+<div class="text-caption text-slate-500">500mg, 850mg, 1000mg • Oral Tablet</div>
+</div>
+<span class="text-caption bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">Commonly Used</span>
+</div>
+<div class="hover:bg-primary-container/10 p-3 flex justify-between items-center cursor-pointer border-b border-slate-50">
+<div>
+<div class="font-bold text-primary">Metformin ER (Extended Release)</div>
+<div class="text-caption text-slate-500">500mg, 750mg • Oral Tablet</div>
+</div>
+</div>
+<div class="hover:bg-primary-container/10 p-3 flex justify-between items-center cursor-pointer">
+<div>
+<div class="font-bold text-primary">Metformin / Sitagliptin</div>
+<div class="text-caption text-slate-500">500mg/50mg • Combination Therapy</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Dosage & Frequency Selection -->
+<div class="grid grid-cols-2 gap-stack-md mt-stack-lg pt-stack-lg border-t border-slate-100">
+<div>
+<label class="block text-label-md text-on-surface-variant mb-stack-xs ml-1">Strength</label>
+<select class="w-full bg-slate-50 border-2 border-slate-100 rounded-lg py-3 px-4 focus:border-primary-container focus:ring-0">
+<option>500 mg</option>
+<option>850 mg</option>
+<option>1000 mg</option>
+</select>
+</div>
+<div>
+<label class="block text-label-md text-on-surface-variant mb-stack-xs ml-1">Frequency</label>
+<select class="w-full bg-slate-50 border-2 border-slate-100 rounded-lg py-3 px-4 focus:border-primary-container focus:ring-0">
+<option>Twice daily (BID)</option>
+<option>Once daily (QD)</option>
+<option>Three times daily (TID)</option>
+<option>As needed (PRN)</option>
+</select>
+</div>
+<div class="col-span-2">
+<label class="block text-label-md text-on-surface-variant mb-stack-xs ml-1">Instructions</label>
+<textarea class="w-full bg-slate-50 border-2 border-slate-100 rounded-lg py-3 px-4 focus:border-primary-container focus:ring-0" placeholder="Take with meals to reduce gastrointestinal side effects..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<!-- Interaction & Allergy Alerts (Safety Layer) -->
+<div class="bg-error-container/20 rounded-xl border-2 border-error/20 p-stack-lg relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="flex gap-4">
+<div class="h-12 w-12 rounded-full bg-error/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error" data-icon="warning" data-weight="fill">warning</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-error-container flex items-center gap-2">
+                                    Safety Alerts (2)
+                                </h3>
+<div class="mt-stack-md space-y-stack-md">
+<div class="flex gap-3">
+<div class="mt-1 h-2 w-2 rounded-full bg-error shrink-0"></div>
+<div>
+<p class="font-bold text-on-error-container text-body-md">Interaction: Contrast Media</p>
+<p class="text-on-error-container/80 text-caption">Patient has an upcoming CT scan. Metformin should be discontinued 48h before and after intravenous contrast studies.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="mt-1 h-2 w-2 rounded-full bg-secondary shrink-0"></div>
+<div>
+<p class="font-bold text-on-error-container text-body-md">Duplicate Therapy Warning</p>
+<p class="text-on-error-container/80 text-caption">Patient is currently prescribed Glipizide. Consider dosage adjustment or monotherapy.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Lab Order Column -->
+<div class="col-span-12 lg:col-span-5">
+<div class="bg-white rounded-xl border border-outline-variant p-stack-lg shadow-md h-full">
+<div class="flex items-center gap-3 mb-stack-lg">
+<span class="material-symbols-outlined text-primary" data-icon="biotech">biotech</span>
+<h2 class="font-h3 text-h3">Lab Orders</h2>
+</div>
+<div class="space-y-stack-md">
+<!-- Hematology Group -->
+<div>
+<h4 class="text-caption font-bold text-slate-400 uppercase tracking-widest mb-stack-sm ml-1">Hematology</h4>
+<div class="grid grid-cols-1 gap-2">
+<label class="flex items-center justify-between p-3 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors group">
+<div class="flex items-center gap-3">
+<input checked="" class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium text-on-surface">CBC with Differential</span>
+</div>
+<span class="text-caption text-slate-400 group-hover:text-primary transition-colors">STAT</span>
+</label>
+<label class="flex items-center justify-between p-3 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors group">
+<div class="flex items-center gap-3">
+<input class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium text-on-surface">Prothrombin Time (PT/INR)</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Metabolic Group -->
+<div>
+<h4 class="text-caption font-bold text-slate-400 uppercase tracking-widest mb-stack-sm mt-stack-md ml-1">Metabolic &amp; Lipids</h4>
+<div class="grid grid-cols-1 gap-2">
+<label class="flex items-center justify-between p-3 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors group">
+<div class="flex items-center gap-3">
+<input checked="" class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium text-on-surface">Lipid Panel (Fasting)</span>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors group">
+<div class="flex items-center gap-3">
+<input checked="" class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium text-on-surface">HbA1c</span>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors group">
+<div class="flex items-center gap-3">
+<input class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium text-on-surface">CMP (Comprehensive Metabolic)</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Search/Add Custom -->
+<div class="mt-stack-lg pt-stack-lg border-t border-slate-100">
+<div class="flex items-center bg-slate-50 rounded-lg border border-slate-200 px-3 py-2 gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm" data-icon="add">add</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full p-0" placeholder="Add custom test..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Order Summary & Authorization (Persistent Action Bar) -->
+<footer class="fixed bottom-0 left-64 right-0 bg-white border-t border-slate-200 shadow-[0_-10px_30px_rgba(0,0,0,0.05)] z-40">
+<div class="max-w-6xl mx-auto px-gutter py-stack-md flex items-center justify-between">
+<div class="flex items-center gap-gutter">
+<div class="flex flex-col">
+<span class="text-caption text-slate-500 uppercase font-bold tracking-tight">Prescription Summary</span>
+<p class="text-sm font-bold text-primary">1 Medication, 3 Lab Orders selected</p>
+</div>
+<div class="h-10 w-px bg-slate-100"></div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="pill">pill</span>
+<span class="text-caption font-bold">Metformin 500mg</span>
+</div>
+<div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="lab_panel">lab_panel</span>
+<span class="text-caption font-bold">+3 Labs</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end mr-4">
+<span class="text-caption text-slate-400">Authorized by</span>
+<span class="text-label-md font-bold text-teal-800">Dr. Julian Vance</span>
+</div>
+<button class="px-6 py-3 rounded-lg border-2 border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition-all">
+                    Discard
+                </button>
+<button class="bg-primary text-white px-8 py-3 rounded-lg font-bold text-sm shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-white" data-icon="verified_user" data-weight="fill">verified_user</span>
+                    Authorize &amp; Send
+                </button>
+</div>
+</div>
+</footer>
+<!-- Patient Progress Mini-Bar (Floating Side Widget) -->
+<div class="fixed right-6 top-24 w-64 bg-white/80 backdrop-blur-md rounded-2xl border border-white p-stack-md shadow-2xl z-20 hidden 2xl:block">
+<h4 class="text-label-md font-bold mb-stack-md">Consultation Progress</h4>
+<div class="space-y-stack-md">
+<div class="flex items-center justify-between text-caption">
+<span class="text-secondary font-bold">Step 3: Treatment Plan</span>
+<span class="text-slate-400">75%</span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-teal-500 to-teal-700 w-3/4 rounded-full"></div>
+</div>
+<ul class="text-caption space-y-2 mt-4">
+<li class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-teal-500 text-xs" data-icon="check_circle">check_circle</span>
+                    Vitals Review
+                </li>
+<li class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-teal-500 text-xs" data-icon="check_circle">check_circle</span>
+                    Symptom Analysis
+                </li>
+<li class="flex items-center gap-2 text-on-surface font-bold">
+<span class="material-symbols-outlined text-primary text-xs" data-icon="radio_button_checked">radio_button_checked</span>
+                    Ordering &amp; Scripts
+                </li>
+<li class="flex items-center gap-2 text-slate-300">
+<span class="material-symbols-outlined text-slate-200 text-xs" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+                    Patient Education
+                </li>
+</ul>
+</div>
+</div>
+</body></html>

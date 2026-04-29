@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CareFlow Patient - Access Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#94d5e9",
+                        "surface-variant": "#d8e3fb",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#151d1e",
+                        "surface-container": "#e7eeff",
+                        "surface": "#f9f9ff",
+                        "outline-variant": "#bfc8cb",
+                        "surface-container-high": "#dee8ff",
+                        "on-background": "#111c2d",
+                        "tertiary": "#374041",
+                        "background": "#f9f9ff",
+                        "on-secondary-fixed": "#00201d",
+                        "on-secondary-fixed-variant": "#00504a",
+                        "surface-tint": "#1d6778",
+                        "surface-container-highest": "#d8e3fb",
+                        "secondary-fixed-dim": "#71d7cd",
+                        "secondary-container": "#8bf1e6",
+                        "primary-fixed": "#aeecff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ecf1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#dbe4e5",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary-fixed-variant": "#004e5d",
+                        "inverse-surface": "#263143",
+                        "outline": "#70797c",
+                        "primary-container": "#0e5e6f",
+                        "on-error": "#ffffff",
+                        "secondary": "#006a63",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#bfc8c9",
+                        "primary": "#004553",
+                        "primary-fixed-dim": "#8fd0e4",
+                        "on-primary-fixed": "#001f26",
+                        "on-surface": "#111c2d",
+                        "surface-dim": "#cfdaf2",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#4e5758",
+                        "on-tertiary-fixed-variant": "#404849",
+                        "on-surface-variant": "#3f484b",
+                        "secondary-fixed": "#8ef4e9",
+                        "on-tertiary-container": "#c4cdce",
+                        "on-secondary-container": "#006f67",
+                        "inverse-primary": "#8fd0e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "section-gap": "48px",
+                        "unit": "8px",
+                        "container-margin": "32px",
+                        "stack-xs": "4px",
+                        "gutter": "24px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "h1": ["Manrope"],
+                        "caption": ["Manrope"],
+                        "h3": ["Manrope"],
+                        "h2": ["Manrope"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "1.2", "letterSpacing": "0", "fontWeight": "500"}],
+                        "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                        "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .reassuring-overlay {
+            background: linear-gradient(135deg, rgba(0, 69, 83, 0.8) 0%, rgba(14, 94, 111, 0.4) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex items-center justify-center p-gutter">
+<!-- Main Container -->
+<main class="w-full max-w-5xl bg-surface-container-lowest rounded-xl shadow-[0_20px_50px_rgba(14,94,111,0.08)] overflow-hidden flex flex-col md:flex-row min-h-[640px]">
+<!-- Visual Sidebar: Reassuring Medical Imagery -->
+<section class="hidden md:flex md:w-1/2 relative overflow-hidden">
+<img alt="Hospital interior" class="absolute inset-0 w-full h-full object-cover" data-alt="Modern minimalist hospital lobby with soft natural light, warm wooden accents, and comfortable seating areas for patients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxnGsem5INZVN43etco0KUv-9iZwUx0u_r02ZrujrKLFJn4YupuDFtQuXUdZ6Mj0KNsT7_Grqxs7MFNyvI05G_ag2f8iztO81IKdC6IqiGw7GxNzEjfs_Nt81pw3IPXUBMUrdh_y1AvsAer77699e_RmcVxU3ggHnR_0OvA9pf_sljFHC1dOFovAdkgyHqLQ5c8creRqFTKGOf56VTquuh6etQCP3HClXsUnfIc51qn-raj37PxxoNPkc-Xf_XdpfCFX5ORysLGpk"/>
+<div class="absolute inset-0 reassuring-overlay flex flex-col justify-end p-container-margin text-on-primary">
+<div class="mb-stack-lg">
+<span class="material-symbols-outlined text-4xl mb-stack-md" data-icon="health_and_safety">health_and_safety</span>
+<h2 class="font-h2 text-h2 mb-stack-sm">CareFlow Patient</h2>
+<p class="font-body-lg text-body-lg opacity-90 max-w-sm">Empowering your health journey with precision and compassionate technology.</p>
+</div>
+<div class="flex gap-stack-md items-center text-caption font-caption border-t border-white/20 pt-stack-md">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-primary" data-alt="Female doctor smiling professionally in white coat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCLWBClGr8TjvuNyhRkl7SusMJZOwokGO73aL6dLE6SV9XFya7qOnKjrkYkUgiIBrVTckYxCaQKbsIpVq5d--itJlcy8OVB8KhW2vEw4ws8d8m78kAdpMLeQwFt4oFc9rSNjABfQrlpO2TGr6fivJvV5nS2YxbPgIuqvBEKI4rur5VFIr6bQheEXmI6a1X0jootvQzwWHcyYJ2p3iLi75XEW-G1-H7odJ7wtc9sG7rSw-Jofqg9hYu0bQWcbYymry0jDM9HINaFNI"/>
+<img class="w-8 h-8 rounded-full border-2 border-primary" data-alt="Male healthcare provider with stethoscope" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDptqtLtJ0Ze3OWnRI7Wg3mZnOTjLDZV1fWCHDmVxKDM6DjdHGHCoOvHzOWkWv7GvZpdWIH8T1I9TTnUH-836_t8t8epbesUfEVS3DiTKOJXzVB3OLnCgxGuEJPKgnf1sVCJMeLrRG_f24vOntU2K412NERGDk-BCiJQNGoEd12gRadqXKwpFdNzVUGInZvf_JvEYIjvNbnHPPauAEletkAp0e1onsdfTLMZduEGBRen4ZUmRgmKdNSa28_nyg7avEJEHkbA-o73D8"/>
+</div>
+<span>Trusted by 10,000+ medical professionals</span>
+</div>
+</div>
+</section>
+<!-- Form Canvas -->
+<section class="flex-1 p-container-margin flex flex-col justify-center">
+<div class="max-w-sm mx-auto w-full">
+<!-- Branding Header -->
+<header class="mb-stack-lg">
+<h1 class="font-h3 text-h3 text-primary mb-stack-xs">Welcome Back</h1>
+<p class="font-body-md text-on-surface-variant">Access your health records and appointments.</p>
+</header>
+<!-- Role Selector Tabs -->
+<div class="flex p-stack-xs bg-surface-container rounded-lg mb-stack-lg">
+<button class="flex-1 py-stack-sm px-stack-md rounded-md font-label-md text-label-md bg-white text-primary shadow-sm transition-all">
+                        Patient
+                    </button>
+<button class="flex-1 py-stack-sm px-stack-md rounded-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-all">
+                        Doctor
+                    </button>
+<button class="flex-1 py-stack-sm px-stack-md rounded-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-all">
+                        Staff
+                    </button>
+</div>
+<!-- Login Form -->
+<form class="space-y-stack-md">
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-stack-xs" for="id-email">Patient ID or Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-stack-md top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="person">person</span>
+<input class="w-full h-12 pl-12 pr-stack-md bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg font-body-md transition-all outline-none" id="id-email" placeholder="e.g. CF-2024-1234" type="text"/>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between items-center mb-stack-xs">
+<label class="block font-label-md text-label-md text-on-surface-variant" for="password">Password</label>
+<a class="font-caption text-caption text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-stack-md top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="lock">lock</span>
+<input class="w-full h-12 pl-12 pr-stack-md bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg font-body-md transition-all outline-none" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-sm py-stack-xs">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" id="remember" type="checkbox"/>
+<label class="font-body-md text-body-md text-on-surface-variant" for="remember">Keep me logged in</label>
+</div>
+<button class="w-full h-12 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all shadow-md active:scale-[0.98] mt-stack-md" type="submit">
+                        Sign In
+                    </button>
+</form>
+<!-- Footer Links -->
+<footer class="mt-stack-lg pt-stack-lg border-t border-surface-container-high text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        New patient? 
+                        <a class="text-primary font-bold hover:underline" href="#">Register Online</a>
+</p>
+<div class="mt-stack-lg flex justify-center gap-stack-lg grayscale opacity-60">
+<div class="flex items-center gap-stack-xs text-caption font-caption">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified_user">verified_user</span>
+                            HIPAA Compliant
+                        </div>
+<div class="flex items-center gap-stack-xs text-caption font-caption">
+<span class="material-symbols-outlined text-[16px]" data-icon="encrypted">encrypted</span>
+                            256-bit AES
+                        </div>
+</div>
+</footer>
+</div>
+</section>
+</main>
+<!-- Support Floating Button -->
+<div class="fixed bottom-gutter right-gutter group">
+<button class="bg-secondary h-14 px-stack-lg rounded-full text-on-secondary shadow-lg flex items-center gap-stack-sm hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="font-label-md text-label-md">Need Assistance?</span>
+</button>
+</div>
+</body></html>
